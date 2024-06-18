@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./CSS/element-ui.min.css">
+    <style>
+        .panel-custom {
+            margin-bottom: 0px; 
+            background-color: transparent;
+        }
+        .generator-container {
+            user-select: none;
+            min-height: 20vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+        .no-padding {
+            height: auto;
+            padding: 0;
+            min-height: 80px;
+        }
+        .el-textarea__inner {
+            width: 100%;
+            border: 0px solid #DCDFE6;
+        }
+        @media screen and (min-width: 220px) and (max-width:600px) {
+            .generator-container img{
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="HoldUpSignImageGenerator">
+        <div class="row" v-loading="loading">
+            <div class="col-xs-12 col-sm-12 margintb-6">
+                <div class="panel panel-default panel-custom">
+                    <div class="panel-body">
+                        <div class="shadow generator-container">
+                            <img :src="gotImg"></img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 margintb-6">
+                <div class="input-group">
+                    <span class="input-group-addon">Text To Generate</span>
+                    <el-input
+                        class="form-control no-padding"
+                        type="textarea"
+                        :autosize="{ minRows: 3 }"
+                        placeholder=""
+                        v-model.trim="positiveText"
+                        maxlength="30"
+                        show-word-limit
+                    >
+                    </el-input>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-12 margintb-6">
+                        <button id="btn-convert" type="button" class="btn btn-default bg-mauve width-100-percent" :disabled="loading" @click="convert"><i class="el-icon-picture-outline"></i> Generate{{loading?'...':''}}</button>
+                    </div>
+                    <div class="col-xs-6 col-sm-12 margintb-6">
+                        <button id="download" type="button" class="btn btn-default bg-mauve width-100-percent" :disabled="loading" @click="download"><i class="el-icon-download"></i> Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    
+    <script src="./Scripts/vue.min.js"></script>
+</body>
+</html>
