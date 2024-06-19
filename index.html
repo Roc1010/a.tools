@@ -7,24 +7,17 @@
 
     <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
     <style>
-        .generator-container {
-            user-select: none;
-            min-height: 20vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            border-radius: 4px;
-            font-size: 15px;
+        .el-row {
+            margin-bottom: 12px;
         }
-        @media screen and (min-width: 220px) and (max-width:600px) {
-            .generator-container img{
-                width: 100% !important;
-            }
+        .el-row:last-child {
+            margin-bottom: 0;
+        }
+        .el-col {
+            border-radius: 4px;
         }
 
         .category {
-            padding-top: 1.5rem;
             position: relative;
             width: 100%;
             text-decoration: none;
@@ -42,7 +35,7 @@
         }
 
         .category__info {
-            padding: 3.5rem 1.5rem 2rem;
+            padding: 0;
             border-radius: 8px;
             background: #f9fafb;
             width: 100%;
@@ -72,7 +65,7 @@
     <div id="app">
         <el-row :gutter="12">
             <el-col :xs="24" :sm="8" :md="6" :lg="6" v-for="(item, index) in tools" :key="index">
-                <el-card shadow="always">
+                <el-card shadow="always" style="height: 100%;">
                     <a :href="`https://www.a.tools/Tool.php?Id=${item.atc_id}`" class="category">
                         <div class="category__info">
                             <h3 class="category__title">{{item.atc_title}}</h3>
